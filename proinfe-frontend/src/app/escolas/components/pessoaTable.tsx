@@ -44,17 +44,31 @@ export default function PessoaTable({ data }: Data) {
             <StyledTableCell align="left">UF</StyledTableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
-          {data.map((row) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.nome}
-              </StyledTableCell>
-              <StyledTableCell align="left">{row.cidade}</StyledTableCell>
-              <StyledTableCell align="left">{row.uf}</StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
+        {data && data.length > 0 ? 
+          (
+            <TableBody>
+              {data.map((row) => (
+                <StyledTableRow key={row.id}>
+                  <StyledTableCell component="th" scope="row">
+                    {row.nome}
+                  </StyledTableCell>
+                  <StyledTableCell align="left">{row.cidade}</StyledTableCell>
+                  <StyledTableCell align="left">{row.uf}</StyledTableCell>
+                </StyledTableRow>
+              ))}
+            </TableBody>
+          )
+        : 
+          (
+            <TableBody>
+              <StyledTableRow>
+                <StyledTableCell colSpan={3} align="center">
+                  Nenhum resultado encontrado!
+                </StyledTableCell>
+              </StyledTableRow>
+            </TableBody>
+          )
+        }
       </Table>
     </TableContainer>
   );

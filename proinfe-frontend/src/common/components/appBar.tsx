@@ -14,11 +14,20 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import { useRouter } from "next/navigation";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar() {
+export default function ResponsiveAppBar() {
+  const pages = ["Escolas"];
+  const settings = ["Profile", "Account", "Dashboard", "Logout"];
+  const router = useRouter();
+
+  const handlePages = (page: string) => {
+    if(page == "Escolas"){
+      router.push("/escolas");
+    }
+  }
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -50,7 +59,7 @@ function ResponsiveAppBar() {
             variant="h6"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
@@ -92,7 +101,7 @@ function ResponsiveAppBar() {
               sx={{ display: { xs: "block", md: "none" } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handlePages(page)}>
                   <Typography sx={{ textAlign: "center" }}>{page}</Typography>
                 </MenuItem>
               ))}
@@ -103,7 +112,7 @@ function ResponsiveAppBar() {
             variant="h5"
             noWrap
             component="a"
-            href="#app-bar-with-responsive-menu"
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -121,7 +130,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={() => handlePages(page)}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -164,4 +173,3 @@ function ResponsiveAppBar() {
     </AppBar>
   );
 }
-export default ResponsiveAppBar;
