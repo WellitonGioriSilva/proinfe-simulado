@@ -1,4 +1,4 @@
-export interface Pessoa {
+export default interface Escola {
   id: number;
   nome: string;
   cidade: string;
