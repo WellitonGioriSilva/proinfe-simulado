@@ -23,8 +23,8 @@ export default function EscolasPage() {
     <Grid container spacing={2} sx={{ width: "100%" }}>
       <Grid size={{ md: 8 }}>
         <TextField
-          id="outlined-basic"
-          label="Outlined"
+          id="nome-search"
+          label="Nome"
           variant="outlined"
           sx={{ width: "100%" }}
         />
